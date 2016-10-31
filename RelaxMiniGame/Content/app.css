@@ -1,0 +1,346 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #252525;
+  color: #444;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.photo-corner {
+  color: #fff;
+  display: block;
+  width: 75px;
+  height: 75px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.photo-corner:before {
+  content: "";
+  display: block;
+  border-style: solid;
+  border-color: #000 transparent;
+  border-width: 75px 75px 0;
+}
+
+.photo-corner > span {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  font-size: 12px;
+}
+
+.app-figure {
+  margin: 0;
+}
+
+.app-figure > img {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.photo-corner.photo-corner-beta > span {
+  right: 5px;
+}
+
+.photo-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  padding: 1rem 0;
+  width: 100%;
+  margin: 0 2px 1rem;
+  border-bottom: 1px solid #444;
+}
+
+.photo-title,
+.photo-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.photo-title h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.photo-actions a {
+  color: #fff;
+  display: block;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.photo-actions a.is-active {
+  cursor: default;
+  pointer-events: none;
+}
+
+.photo-actions a:hover svg,
+.photo-actions a:focus svg,
+.photo-actions a.is-active svg {
+  fill: #fff;
+}
+
+.photo-actions a:hover,
+.photo-actions a:focus {
+  outline: none;
+}
+
+.photo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-width: 60rem;
+  padding: 0 7.5rem;
+  margin: 0 auto;
+}
+
+.photo-overflow {
+  overflow: hidden;
+}
+
+.photo-container:after {
+  content: "";
+  -webkit-box-flex: 1e4;
+      -ms-flex-positive: 1e4;
+          flex-grow: 1e4;
+}
+
+.photo {
+  margin: 2px;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.photo i {
+  display: block;
+}
+
+.photo img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.photo-transition {
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+.photo-enter {
+  opacity: 0;
+}
+
+.photo-leave {
+  opacity: 0;
+  position: absolute; /* important for removal move to work */
+}
+
+.photo-move {
+  -webkit-transition: -webkit-transform 1s cubic-bezier(.55, 0, .1, 1);
+  transition: -webkit-transform 1s cubic-bezier(.55, 0, .1, 1);
+  transition: transform 1s cubic-bezier(.55, 0, .1, 1);
+  transition: transform 1s cubic-bezier(.55, 0, .1, 1), -webkit-transform 1s cubic-bezier(.55, 0, .1, 1);
+}
+
+.photo-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+}
+
+.photo-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.photo-tooltip:hover:before,
+.photo-tooltip:hover:after {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.2s 0.3s;
+  -webkit-transition: 0.2s 0.3s;
+  -ms-transition: 0.2s 0.3s;
+}
+
+.photo-tooltip:before,
+.photo-tooltip:after {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1e4;
+  pointer-events: none;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.photo-tooltip:before {
+  content: "";
+  border: 7px solid transparent;
+  bottom: 0;
+  z-index: 1000001;
+}
+
+.photo-tooltip:after {
+  content: attr(aria-label);
+  background-color: #000;
+  border-radius: 3px;
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  padding: 3px 15px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.photo-tooltip:hover:before,
+.photo-tooltip:focus:before {
+  bottom: -15%;
+}
+
+.photo-tooltip:hover:after,
+.photo-tooltip:focus:after {
+  top: 115%;
+}
+
+.photo-tooltip:before,
+.photo-tooltip:after {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.photo-tooltip:before {
+  border-bottom-color: #000;
+  bottom: -35%;
+}
+
+.photo-tooltip:after {
+  top: 135%;
+}
+
+.photo-preview  {
+  background: #252525;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	display: -ms-flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: center;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	-ms-flex-align: center;
+	-webkit-box-align: center;
+	        align-items: center;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+  opacity: 0;
+}
+
+.photo-preview .photo-preview-cover {
+  opacity: 0;
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+          transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  -webkit-transition: opacity 1s ease-out;
+	transition: opacity 1s ease-out;
+}
+
+.photo-preview.photo-preview-open .photo-preview-cover {
+  opacity: 1;
+}
+
+.photo-preview .photo-preview-cover img {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.photo-preview-open {
+	pointer-events: auto;
+  opacity: 1;
+}
+
+.photo-preview-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.photo-preview-close svg {
+  fill: #fff;
+}
+
+.photo-preview-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+  transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+}
+
+.photo-preview-overlay circle {
+	-webkit-transition: fill-opacity 0.3s, -webkit-transform 0s 0.3s;
+	transition: fill-opacity 0.3s, -webkit-transform 0s 0.3s;
+	transition: fill-opacity 0.3s, transform 0s 0.3s;
+	transition: fill-opacity 0.3s, transform 0s 0.3s, -webkit-transform 0s 0.3s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	-webkit-transform: scale3d(0, 0, 1);
+	transform: scale3d(0, 0, 1);
+	fill: #1f1d1d;
+	fill-opacity: 0;
+}
+
+.photo-preview-open .photo-preview-overlay circle {
+	-webkit-transition: -webkit-transform 0.4s;
+	transition: -webkit-transform 0.4s;
+	transition: transform 0.4s;
+	transition: transform 0.4s, -webkit-transform 0.4s;
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
+	fill-opacity: 1;
+}
