@@ -13,5 +13,9 @@ namespace RelaxMiniGame.Controllers
         {
             return View();
         }
+        public ActionResult Version1()
+        {
+            return View();
+        }
     }
 }

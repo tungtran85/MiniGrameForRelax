@@ -1,7 +1,6 @@
-﻿@model dynamic
-
+﻿ 
 @{
-    ViewBag.Title = "Puzzle Game";
+    ViewBag.Title = "Puzzle Game V1";
 
 }
 <script src="~/Scripts/jquery-2.2.0.js"></script>
@@ -93,7 +92,7 @@
 
         var rSource = $('#' + idSource).attr('myrow');
         var cSource = $('#' + idSource).attr('mycol');
-        
+
         //alert("rDes: " + rDes + " cDes: " + cDes + "- rSource: " + rSource + " cSource: " + rSource);
         var resource = 0;
         if (rDes === rSource) {
@@ -130,7 +129,7 @@
         InitPuzzle();
     };
 </script>
-<h2>Puzzle</h2>
+<h1>Puzzle V1</h1>
 <table style="width: 900px;">
     <tr>
         <td style="width: 600px">

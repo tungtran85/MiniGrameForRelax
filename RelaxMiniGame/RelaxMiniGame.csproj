@@ -330,6 +330,7 @@
     <Content Include="Views\Game\MonkeyV1.cshtml" />
     <Content Include="Views\Game\VueDice.cshtml" />
     <Content Include="Views\PuzzleGame\Index.cshtml" />
+    <Content Include="Views\PuzzleGame\Version1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
