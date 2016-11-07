@@ -17,5 +17,10 @@ namespace RelaxMiniGame.Controllers
         {
             return View();
         }
+        public ActionResult Version2()
+        {
+            //SplitImageClass.SplitImageFile(@"D:\Publish\Practice_\ProjectTools\DemoSplitImage\Images_\DemoSplit_.jpg", 4, 4);
+            return View();
+        }
     }
 }

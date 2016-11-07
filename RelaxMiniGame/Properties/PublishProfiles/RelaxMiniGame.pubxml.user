@@ -94,7 +94,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2012 13:00:52</publishTime>
     </File>
     <File Include="bin/RelaxMiniGame.dll">
-      <publishTime>10/31/2016 17:01:55</publishTime>
+      <publishTime>11/07/2016 02:56:36</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/18/2015 20:19:46</publishTime>
@@ -258,6 +258,57 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/orderedList9.png">
       <publishTime>02/17/2016 21:13:09</publishTime>
     </File>
+    <File Include="Images/PuzzleImages_/Blank.png">
+      <publishTime>07/03/2014 23:08:54</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic.jpg">
+      <publishTime>07/03/2014 23:19:28</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_01.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_02.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_03.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_04.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_05.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_06.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_07.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_08.jpg">
+      <publishTime>07/03/2014 23:08:56</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_09.jpg">
+      <publishTime>07/03/2014 23:08:58</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_10.jpg">
+      <publishTime>07/03/2014 23:08:58</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_11.jpg">
+      <publishTime>07/03/2014 23:08:58</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_12.jpg">
+      <publishTime>07/03/2014 23:08:58</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_13.jpg">
+      <publishTime>07/03/2014 23:08:58</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_14.jpg">
+      <publishTime>07/03/2014 23:08:58</publishTime>
+    </File>
+    <File Include="Images/PuzzleImages_/Pic_15.jpg">
+      <publishTime>07/03/2014 23:08:58</publishTime>
+    </File>
     <File Include="Images/thumbs-down.png">
       <publishTime>02/21/2016 19:38:50</publishTime>
     </File>
@@ -399,6 +450,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>10/31/2016 15:49:31</publishTime>
     </File>
+    <File Include="Views/PuzzleGame/Index.cshtml">
+      <publishTime>11/07/2016 02:47:19</publishTime>
+    </File>
+    <File Include="Views/PuzzleGame/Version1.cshtml">
+      <publishTime>11/07/2016 02:49:43</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/31/2016 15:49:30</publishTime>
     </File>
@@ -406,7 +463,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/31/2016 15:49:31</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/31/2016 16:29:11</publishTime>
+      <publishTime>11/07/2016 02:51:51</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/31/2016 15:49:31</publishTime>

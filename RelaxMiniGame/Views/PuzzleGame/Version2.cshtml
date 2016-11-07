@@ -1,0 +1,237 @@
+﻿
+@{
+    ViewBag.Title = "Puzzle Game V2";
+
+}
+<script src="~/Scripts/jquery-2.2.0.js"></script>
+<style>
+    img {
+        width: 130px;
+        height: 120px;
+    }
+
+    td {
+        padding: 1px;
+    }
+</style>
+<script>
+    var dcData = [
+        { key: '11', value: '/Images/PuzzleImages_/Pic_01.jpg' },
+        { key: '12', value: '/Images/PuzzleImages_/Pic_02.jpg' },
+        { key: '13', value: '/Images/PuzzleImages_/Pic_03.jpg' },
+        { key: '14', value: '/Images/PuzzleImages_/Pic_04.jpg' },
+        { key: '21', value: '/Images/PuzzleImages_/Pic_05.jpg' },
+        { key: '22', value: '/Images/PuzzleImages_/Pic_06.jpg' },
+        { key: '23', value: '/Images/PuzzleImages_/Pic_07.jpg' },
+        { key: '24', value: '/Images/PuzzleImages_/Pic_08.jpg' },
+        { key: '31', value: '/Images/PuzzleImages_/Pic_09.jpg' },
+        { key: '32', value: '/Images/PuzzleImages_/Pic_10.jpg' },
+        { key: '33', value: '/Images/PuzzleImages_/Pic_11.jpg' },
+        { key: '34', value: '/Images/PuzzleImages_/Pic_12.jpg' },
+        { key: '41', value: '/Images/PuzzleImages_/Pic_13.jpg' },
+        { key: '42', value: '/Images/PuzzleImages_/Pic_14.jpg' },
+        { key: '43', value: '/Images/PuzzleImages_/Pic_15.jpg' },
+        { key: '44', value: '/Images/PuzzleImages_/Blank.png' }
+    ];
+
+    $(function() {
+        //InitPuzzle();
+        LoadDVD();
+    });
+
+    function InitPuzzle() {
+        //console.log("Lenght dcData : " + dcData.length);
+        var dcTemp = [];
+        for (var j = 0; j < dcData.length; j++) {
+            dcTemp.push(j);
+        }
+        //console.log("Lenght dcTemp : " + dcTemp.length);
+        //debugger;
+        for (var i = 0; i < dcData.length; i++) {
+            //console.log("Round : " + i);
+            //console.log(dcTemp);
+            var vRandom = randomIntFromInterval(0, dcTemp.length - 1);
+            //console.log("Rand Index : " + vRandom);
+
+            //console.log("Rand Key : " + dcTemp[vRandom]);
+            //console.log("Value Rand dcData : " + dcData[dcTemp[vRandom]].value);
+            $('#id_img_' + dcData[i].key).attr('src', dcData[dcTemp[vRandom]].value);
+            $('#id_img_' + dcData[i].key).attr('index2', dcData[dcTemp[vRandom]].key);
+            dcTemp.splice(vRandom, 1);
+            //console.log("Lenght dcTemp rest : " + dcTemp.length);
+        }
+    }
+
+    function moveImage(item) {
+        var idDes = $(item).attr('id');
+        var idSource = $("img[index2='44']").attr('id');
+        if (CheckValidMove(idDes, idSource)) {
+            MoveSelectImage(idDes, idSource);
+            if (IsWin()) {
+                alert("Dzu Qua, Win rui ban ^_^.");
+            }
+        } else {
+            alert("Biet choi khong dzi troi? ^_^");
+        }
+    }
+
+    function MoveSelectImage(idDes, idSource) {
+        var tmpIndex2 = $('#' + idDes).attr('index2');
+        var tmpsrc = $('#' + idDes).attr('src');
+
+        $('#' + idDes).attr('index2', $('#' + idSource).attr('index2'));
+        $('#' + idDes).attr('src', $('#' + idSource).attr('src'));
+
+        $('#' + idSource).attr('index2', tmpIndex2);
+        $('#' + idSource).attr('src', tmpsrc);
+    }
+
+    function CheckValidMove(idDes, idSource) {
+        //TODO: for test function win
+        //return true;
+        var rDes = $('#' + idDes).attr('myrow');
+        var cDes = $('#' + idDes).attr('mycol');
+
+        var rSource = $('#' + idSource).attr('myrow');
+        var cSource = $('#' + idSource).attr('mycol');
+
+        //alert("rDes: " + rDes + " cDes: " + cDes + "- rSource: " + rSource + " cSource: " + rSource);
+        var resource = 0;
+        if (rDes === rSource) {
+            resource = cDes - cSource;
+            if (Math.abs(resource) === 1) {
+                return true;
+            }
+        } else if (cDes === cSource) {
+            resource = rDes - rSource;
+            if (Math.abs(resource) === 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function IsWin() {
+        var iswin = true;
+        $('#idTableGame img').each(function() {
+            if ($(this).attr('index1') !== $(this).attr('index2')) {
+                iswin = false;
+            }
+        });
+        return iswin;
+    }
+
+    function randomIntFromInterval(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function ResetGame() {
+        console.log("Reset Game ^_^");
+        InitPuzzle();
+    };
+
+    function LoadDVD() {
+        $.getJSON("http://dvd.kachinlina.com/Home/GenerateRandomImage/1", function(lstImg) {
+            $.each(lstImg, function(i, value) {
+                //value.Id
+                //value.Name
+                $('#idimgFull').attr('src', value.Name);
+                $('#idimgFull').attr('myId', value.Id);
+            });
+        });
+    }
+
+    function SplitImages() {
+        alert("Not implement yet ^_^ !!!");
+    }
+
+</script>
+<h1>Puzzle V1</h1>
+<table style="width: 900px;">
+    <tr>
+        <td style="width: 600px">
+            <table style="border: 0;" id="idTableGame">
+                <tr>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_11" myrow="1" mycol="1" index1="11" index2="" src="~/Images/PuzzleImages_/Pic_01.jpg" />
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_12" myrow="1" mycol="2" index1="12" index2="" src="~/Images/PuzzleImages_/Pic_02.jpg" />
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_13" myrow="1" mycol="3" index1="13" index2="" src="~/Images/PuzzleImages_/Pic_03.jpg" />
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_14" myrow="1" mycol="4" index1="14" index2="" src="~/Images/PuzzleImages_/Pic_04.jpg" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_21" myrow="2" mycol="1" index1="21" index2="" src="~/Images/PuzzleImages_/Pic_05.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_22" myrow="2" mycol="2" index1="22" index2="" src="~/Images/PuzzleImages_/Pic_06.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_23" myrow="2" mycol="3" index1="23" index2="" src="~/Images/PuzzleImages_/Pic_07.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_24" myrow="2" mycol="4" index1="24" index2="" src="~/Images/PuzzleImages_/Pic_08.jpg" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_31" myrow="3" mycol="1" index1="31" index2="" src="~/Images/PuzzleImages_/Pic_09.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_32" myrow="3" mycol="2" index1="32" index2="" src="~/Images/PuzzleImages_/Pic_10.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_33" myrow="3" mycol="3" index1="33" index2="" src="~/Images/PuzzleImages_/Pic_11.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_34" myrow="3" mycol="4" index1="34" index2="" src="~/Images/PuzzleImages_/Pic_12.jpg" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_41" myrow="4" mycol="1" index1="41" index2="" src="~/Images/PuzzleImages_/Pic_13.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_42" myrow="4" mycol="2" index1="42" index2="" src="~/Images/PuzzleImages_/Pic_14.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_43" myrow="4" mycol="3" index1="43" index2="" src="~/Images/PuzzleImages_/Pic_15.jpg" />
+
+                    </td>
+                    <td>
+                        <img onclick="moveImage(this);" id="id_img_44" myrow="4" mycol="4" index1="44" index2="" src="~/Images/PuzzleImages_/Blank.png" />
+
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="width: 300px; text-align: center;">
+            <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="width: 450px !important; height: 450px !important" />
+            <br /><br /><br />
+            <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnLoadDVDImage" type="button" onclick="LoadDVD();"> Refresh Image </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnSplitImage" type="button" onclick="SplitImages();"> Split Image </button>
+
+        </td>
+    </tr>
+</table>
+
+
