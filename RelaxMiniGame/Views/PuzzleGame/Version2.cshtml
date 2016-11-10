@@ -133,16 +133,40 @@
     function LoadDVD() {
         $.getJSON("http://dvd.kachinlina.com/Home/GenerateRandomImage/1", function(lstImg) {
             $.each(lstImg, function(i, value) {
-                //value.Id
-                //value.Name
                 $('#idimgFull').attr('src', value.Name);
                 $('#idimgFull').attr('myId', value.Id);
+                $('#idimgFull').attr('dvdId', value.Id);
+                $('#idimgFull').attr('dvdUrl', value.Name);
             });
         });
     }
 
     function SplitImages() {
-        alert("Not implement yet ^_^ !!!");
+        //alert("Not implement yet ^_^ !!!");
+        var vId = $('#idimgFull').attr('dvdId');
+        var vUrl = $('#idimgFull').attr('dvdUrl');
+        $.get('@Url.Action("SplitImageUrl", "PuzzleGame")', { id: vId, imgUrl: vUrl }, function (response) {
+            alert(response.exten);
+            
+            dcData = [];
+            var iCounter = 0;
+            for (var i = 1; i < 5; i++)
+            {
+                for (var j = 1; j < 5; j++)
+                {
+                    var vKey = i.toString() + j.toString();
+                    var vValue = '/Images/' + vId + '/' + vId + '_' + iCounter + response.exten;
+                    if (i !== 4 && j !== 4) {
+                        dcData.push({ key: vKey, value: vValue });
+                    } else {
+                        dcData.push({ key: '44', value: '/Images/PuzzleImages_/Blank.png' });
+                    }
+                    iCounter += 1;
+                }
+            }
+            debugger;
+            InitPuzzle();
+        });
     }
 
 </script>
