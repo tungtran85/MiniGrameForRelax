@@ -146,8 +146,8 @@
         var vId = $('#idimgFull').attr('dvdId');
         var vUrl = $('#idimgFull').attr('dvdUrl');
         $.get('@Url.Action("SplitImageUrl", "PuzzleGame")', { id: vId, imgUrl: vUrl }, function (response) {
-            alert(response.exten);
-            
+            //alert(response.exten);
+            //debugger;
             dcData = [];
             var iCounter = 0;
             for (var i = 1; i < 5; i++)
@@ -156,15 +156,15 @@
                 {
                     var vKey = i.toString() + j.toString();
                     var vValue = '/Images/' + vId + '/' + vId + '_' + iCounter + response.exten;
-                    if (i !== 4 && j !== 4) {
-                        dcData.push({ key: vKey, value: vValue });
-                    } else {
+                    if (i === 4 && j === 4) {
                         dcData.push({ key: '44', value: '/Images/PuzzleImages_/Blank.png' });
+                    } else {
+                        dcData.push({ key: vKey, value: vValue });
                     }
                     iCounter += 1;
                 }
             }
-            debugger;
+            //debugger;
             InitPuzzle();
         });
     }
@@ -245,8 +245,8 @@
                 </tr>
             </table>
         </td>
-        <td style="width: 300px; text-align: center;">
-            <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="width: 450px !important; height: 450px !important" />
+        <td style="width: 300px; text-align: right;">
+            <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="margin-top: 20px; width: 450px !important; height: 450px !important" />
             <br /><br /><br />
             <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
             &nbsp;&nbsp;&nbsp;&nbsp;
