@@ -12,7 +12,7 @@
 @*<script src="~/odometer/odometer.min.js"></script>*@
 <style>
     .odometer {
-        font-size: 40px;
+        font-size: 80px;
     }
 </style>
 <script>
@@ -28,22 +28,21 @@
         // use it when you're looking for something more subtle.
     };
 </script>
-<br /><br /><br /><br /><br /><br />
-@*<div style="height: 250px; margin-top: 5px;">
-    <div class="odometer">1234567890</div>
-</div>*@
-<br/>
-<div>
+<br /><br /><br /><br /><br /><br /><br/>
+<div style="text-align: center;">
+    <div id="id1" class="odometer odometer_number_one "></div>
+    <div id="id2" class="odometer odometer_number_two "></div>
+    <div id="id3" class="odometer odometer_number_three "></div>
+    <div id="id4" class="odometer odometer_number_four "></div>
+    <div id="id5" class="odometer odometer_number_five "></div>
+    <div id="id6" class="odometer odometer_number_six "></div>
+</div>
+
+
+<br /><br />
+<div style="text-align: center; margin-top: 100px;" >
     <button type="button" onclick="GenericNumber();">Random</button>
 </div>
-<br/><br/>
-<div id="id1" class="odometer odometer_number_one "></div>
-<div id="id2"  class="odometer odometer_number_two "></div>
-<div id="id3"  class="odometer odometer_number_three "></div>
-<div id="id4"  class="odometer odometer_number_four "></div>
-<div id="id5"  class="odometer odometer_number_five "></div>
-<div id="id6"  class="odometer odometer_number_six "></div>
-  
 <script>
     var n1 = 0;
     var n2 = 0;
@@ -108,28 +107,41 @@
         var lstTemp = [];
 
         n1 = random1_45(lst.length);
-        lst.splice(n1, 1);
+        //while (lst.contains(n1)) {
+        //    n1 = random1_45(lst.length);
+        //}
         lstTemp.push(n1);
 
         n2 = random1_45(lst.length);
-        lst.splice(n2, 1);
+        //while (lst.contains(n2)) {
+        //    n2 = random1_45(lst.length);
+        //}
         lstTemp.push(n2);
 
         n3 = random1_45(lst.length);
-        lst.splice(n3, 1);
+        //while (lst.contains(n3)) {
+        //    n3 = random1_45(lst.length);
+        //}
         lstTemp.push(n3);
 
         n4 = random1_45(lst.length);
-        lst.splice(n4, 1);
+        //while (lst.contains(n4)) {
+        //    n4 = random1_45(lst.length);
+        //}
         lstTemp.push(n4);
 
         n5 = random1_45(lst.length);
-        lst.splice(n5, 1);
+        //while (lst.contains(n5)) {
+        //    n5 = random1_45(lst.length);
+        //}
         lstTemp.push(n5);
 
         n6 = random1_45(lst.length);
+        //while (lst.contains(n6)) {
+        //    n6 = random1_45(lst.length);
+        //}
         lstTemp.push(n6);
-        console.log(n1 + '-' + n2 + '-' + n3 + '-' + n4 + '-' + n5 + '-' + n6);
+        //console.log(n1 + '-' + n2 + '-' + n3 + '-' + n4 + '-' + n5 + '-' + n6);
         reOrderValue(lstTemp);
     }
 
@@ -157,7 +169,7 @@
     }
 
     function reOrderValue(lstTemp) {
-        var lstResult = lstTemp.sort();
+        var lstResult = lstTemp.sort(function (a, b) { return a - b });
         n1 = lstResult[0];
         n2 = lstResult[1];
         n3 = lstResult[2];
