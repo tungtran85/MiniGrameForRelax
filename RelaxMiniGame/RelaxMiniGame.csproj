@@ -210,6 +210,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PuzzleGameController.cs" />
+    <Compile Include="Controllers\VietLottController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,6 +268,15 @@
     <Content Include="Images\PuzzleImages_\Pic_15.jpg" />
     <Content Include="Images\thumbs-down.png" />
     <Content Include="Images\thumbs-up.png" />
+    <Content Include="odometer\odometer.js" />
+    <Content Include="odometer\odometer.min.js" />
+    <Content Include="odometer\themes\odometer-theme-car.css" />
+    <Content Include="odometer\themes\odometer-theme-default.css" />
+    <Content Include="odometer\themes\odometer-theme-digital.css" />
+    <Content Include="odometer\themes\odometer-theme-minimal.css" />
+    <Content Include="odometer\themes\odometer-theme-plaza.css" />
+    <Content Include="odometer\themes\odometer-theme-slot-machine.css" />
+    <Content Include="odometer\themes\odometer-theme-train-station.css" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\app.js" />
@@ -332,6 +342,7 @@
     <Content Include="Views\PuzzleGame\Index.cshtml" />
     <Content Include="Views\PuzzleGame\Version1.cshtml" />
     <Content Include="Views\PuzzleGame\Version2.cshtml" />
+    <Content Include="Views\VietLott\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
