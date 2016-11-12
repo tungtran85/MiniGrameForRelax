@@ -4,7 +4,7 @@
     ViewBag.Title = "Puzzle Game";
 
 }
-<script src="~/Scripts/jquery-2.2.0.js"></script>
+@section Styles {
 <style>
     img {
         width: 130px;
@@ -15,6 +15,9 @@
         padding: 1px;
     }
 </style>
+}
+
+@section Scripts {
 <script>
     var dcData = [
         { key: '11', value: '/Images/PuzzleImages_/Pic_01.jpg' },
@@ -93,7 +96,7 @@
 
         var rSource = $('#' + idSource).attr('myrow');
         var cSource = $('#' + idSource).attr('mycol');
-        
+
         //alert("rDes: " + rDes + " cDes: " + cDes + "- rSource: " + rSource + " cSource: " + rSource);
         var resource = 0;
         if (rDes === rSource) {
@@ -130,87 +133,88 @@
         InitPuzzle();
     };
 </script>
-<h2>Puzzle</h2>
-<table style="width: 900px;">
-    <tr>
-        <td style="width: 600px">
-            <table style="border: 0;" id="idTableGame">
-                <tr>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_11" myrow="1" mycol="1" index1="11" index2="" src="~/Images/PuzzleImages_/Pic_01.jpg" />
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_12" myrow="1" mycol="2" index1="12" index2="" src="~/Images/PuzzleImages_/Pic_02.jpg" />
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_13" myrow="1" mycol="3" index1="13" index2="" src="~/Images/PuzzleImages_/Pic_03.jpg" />
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_14" myrow="1" mycol="4" index1="14" index2="" src="~/Images/PuzzleImages_/Pic_04.jpg" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_21" myrow="2" mycol="1" index1="21" index2="" src="~/Images/PuzzleImages_/Pic_05.jpg" />
+}
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_22" myrow="2" mycol="2" index1="22" index2="" src="~/Images/PuzzleImages_/Pic_06.jpg" />
+<section class="container">
+    <table style="width: 900px;">
+        <tr>
+            <td style="width: 600px">
+                <table style="border: 0;" id="idTableGame">
+                    <tr>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_11" myrow="1" mycol="1" index1="11" index2="" src="~/Images/PuzzleImages_/Pic_01.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_12" myrow="1" mycol="2" index1="12" index2="" src="~/Images/PuzzleImages_/Pic_02.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_13" myrow="1" mycol="3" index1="13" index2="" src="~/Images/PuzzleImages_/Pic_03.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_14" myrow="1" mycol="4" index1="14" index2="" src="~/Images/PuzzleImages_/Pic_04.jpg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_21" myrow="2" mycol="1" index1="21" index2="" src="~/Images/PuzzleImages_/Pic_05.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_23" myrow="2" mycol="3" index1="23" index2="" src="~/Images/PuzzleImages_/Pic_07.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_22" myrow="2" mycol="2" index1="22" index2="" src="~/Images/PuzzleImages_/Pic_06.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_24" myrow="2" mycol="4" index1="24" index2="" src="~/Images/PuzzleImages_/Pic_08.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_23" myrow="2" mycol="3" index1="23" index2="" src="~/Images/PuzzleImages_/Pic_07.jpg" />
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_31" myrow="3" mycol="1" index1="31" index2="" src="~/Images/PuzzleImages_/Pic_09.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_24" myrow="2" mycol="4" index1="24" index2="" src="~/Images/PuzzleImages_/Pic_08.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_32" myrow="3" mycol="2" index1="32" index2="" src="~/Images/PuzzleImages_/Pic_10.jpg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_31" myrow="3" mycol="1" index1="31" index2="" src="~/Images/PuzzleImages_/Pic_09.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_33" myrow="3" mycol="3" index1="33" index2="" src="~/Images/PuzzleImages_/Pic_11.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_32" myrow="3" mycol="2" index1="32" index2="" src="~/Images/PuzzleImages_/Pic_10.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_34" myrow="3" mycol="4" index1="34" index2="" src="~/Images/PuzzleImages_/Pic_12.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_33" myrow="3" mycol="3" index1="33" index2="" src="~/Images/PuzzleImages_/Pic_11.jpg" />
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_41" myrow="4" mycol="1" index1="41" index2="" src="~/Images/PuzzleImages_/Pic_13.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_34" myrow="3" mycol="4" index1="34" index2="" src="~/Images/PuzzleImages_/Pic_12.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_42" myrow="4" mycol="2" index1="42" index2="" src="~/Images/PuzzleImages_/Pic_14.jpg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_41" myrow="4" mycol="1" index1="41" index2="" src="~/Images/PuzzleImages_/Pic_13.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_43" myrow="4" mycol="3" index1="43" index2="" src="~/Images/PuzzleImages_/Pic_15.jpg" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_42" myrow="4" mycol="2" index1="42" index2="" src="~/Images/PuzzleImages_/Pic_14.jpg" />
 
-                    </td>
-                    <td>
-                        <img onclick="moveImage(this);" id="id_img_44" myrow="4" mycol="4" index1="44" index2="" src="~/Images/PuzzleImages_/Blank.png" />
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_43" myrow="4" mycol="3" index1="43" index2="" src="~/Images/PuzzleImages_/Pic_15.jpg" />
 
-                    </td>
-                </tr>
-            </table>
-        </td>
-        <td style="width: 300px">
-            <img src="~/Images/PuzzleImages_/Pic.jpg" style="width: 350px !important; height: 350px !important" />
-            <br /><br /><br />
-            <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
-        </td>
-    </tr>
-</table>
+                        </td>
+                        <td>
+                            <img onclick="moveImage(this);" id="id_img_44" myrow="4" mycol="4" index1="44" index2="" src="~/Images/PuzzleImages_/Blank.png" />
 
-
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 300px">
+                <img src="~/Images/PuzzleImages_/Pic.jpg" style="width: 350px !important; height: 350px !important" />
+                <br /><br /><br />
+                <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
+            </td>
+        </tr>
+    </table>
+</section>

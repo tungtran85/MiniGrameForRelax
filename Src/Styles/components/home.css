@@ -1,0 +1,104 @@
+.site-header {
+    background: #f4f5f6;
+    border-bottom: .1rem solid #d1d1d1;
+    display: block;
+    height: 5.2rem;
+    max-width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    &-logo,
+    &-title {
+        display: inline;
+        font-size: 2.4rem;
+        line-height: 5.2rem;
+        padding: 0;
+        text-decoration: none;
+    }
+}
+
+.site-main {
+    margin: 7.5rem 0 3rem;
+}
+
+.card {
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: #fff;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5,0 0 0 1px #d4d4d5;
+    transition: box-shadow .1s ease,-webkit-transform .1s ease;
+    height: 12rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    &.red {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #db2828,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.orange {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #f2711c,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.yellow {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #fbbd08,0 1px 3px 0 #d4d4d5;
+    }
+
+
+    &.olive {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #b5cc18,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.green {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #21ba45,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.teal {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #00b5ad,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.blue {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #2185d0,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.violet {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #6435c9,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.purple {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #a333c8,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.pink {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #e03997,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.brown {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #a5673f,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.grey {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #767676,0 1px 3px 0 #d4d4d5;
+    }
+
+    &.black {
+        box-shadow: 0 0 0 1px #d4d4d5,0 2px 0 0 #1B1C1D,0 1px 3px 0 #d4d4d5;
+    }
+}
+
+.u-text-center {
+    text-align: center;
+}
+
+.u-m-t-100 {
+    margin-top: 100px;
+}

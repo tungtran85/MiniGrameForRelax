@@ -5,45 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    @RenderSection("Styles", required: false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Mini Games", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    
-                    <li>@Html.ActionLink("Monkey", "Index", "Game")</li>
-                    <li>@Html.ActionLink("Monkey V1", "MonkeyV1", "Game")</li>
-                    <li>@Html.ActionLink("VueDice", "VueDice", "Game")</li>
-                    <li>@Html.ActionLink("Puzzle", "Index", "PuzzleGame")</li>
-                    <li>@Html.ActionLink("Puzzle V1", "Version1", "PuzzleGame")</li>
-                    <li>@Html.ActionLink("Puzzle V2", "Version2", "PuzzleGame")</li>
-                    <li>@Html.ActionLink("Vietlott V1", "Index", "VietLott")</li>
-                </ul>
-                @*@Html.Partial("_LoginPartial")*@
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
+    <header role="banner" class="site-header">
+        <section class="container">
+            <a href="/" class="site-header-logo">
+                <h1 class="site-header-title">Kachinlina Games</h1>
+            </a>
+        </section>
+    </header>
+    <main role="main" class="site-main">
         @RenderBody()
-        <hr />
-        <footer>
+    </main>
+    <footer role="contentinfo" class="site-footer">
+        <section class="container">
             <p>&copy; @DateTime.Now.Year - Tung Tran</p>
-        </footer>
-    </div>
+        </section>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

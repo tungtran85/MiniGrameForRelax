@@ -1,0 +1,5 @@
+node_modules
+packages
+RelaxMiniGame/bin
+RelaxMiniGame/obj
+GameAPISupport/obj

@@ -2,130 +2,141 @@
 
 @{
     ViewBag.Title = "Monkey Orginal";
-    //Layout = "~/Views/Shared/_Layout";
 }
 
-<script src="~/Scripts/jquery-2.2.0.js"></script>
-<script src="~/Scripts/jquery-ui-1.11.4.js"></script>
-<h2>Monkey Orginal</h2>
+<style>
+    td, th {
+        padding: 0;
+    }
 
-<div style="text-align: center;">
-    <div>
-        <table>
-            <tr>
-                <td>
-                    <div id="id11" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id12" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id13" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id14" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id15" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id16" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id17" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id18" style="width: 125px; height: 115px;"></div></td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="id21" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id22" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id23" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id24" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id25" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id26" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id27" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id28" style="width: 125px; height: 115px;"></div></td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="id31" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id32" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id33" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id34" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id35" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id36" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id37" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id38" style="width: 125px; height: 115px;"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="id41" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id42" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id43" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id44" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id45" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id46" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id47" style="width: 125px; height: 115px;"></div>
-                </td>
-                <td>
-                    <div id="id48" style="width: 125px; height: 115px;"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="id51" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id52" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id53" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id54" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id55" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id56" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id57" style="width: 125px; height: 115px;"></div></td>
-                <td>
-                    <div id="id58" style="width: 125px; height: 115px;"></div></td>
-            </tr>
-        </table>
-    </div><br/>
+    .game-monkey div,
+    .game-monkey h1 {
+        width: 115px;
+        height: 115px;
+        line-height: 115px;
+    }
+
+    .game-monkey img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="container u-text-center">
+    <table class="game-monkey">
+        <tr>
+            <td>
+                <div id="id11"></div></td>
+            <td>
+                <div id="id12"></div></td>
+            <td>
+                <div id="id13"></div></td>
+            <td>
+                <div id="id14"></div></td>
+            <td>
+                <div id="id15"></div></td>
+            <td>
+                <div id="id16"></div></td>
+            <td>
+                <div id="id17"></div></td>
+            <td>
+                <div id="id18"></div></td>
+        </tr>
+        <tr>
+            <td>
+                <div id="id21"></div></td>
+            <td>
+                <div id="id22"></div></td>
+            <td>
+                <div id="id23"></div></td>
+            <td>
+                <div id="id24"></div></td>
+            <td>
+                <div id="id25"></div></td>
+            <td>
+                <div id="id26"></div></td>
+            <td>
+                <div id="id27"></div></td>
+            <td>
+                <div id="id28"></div></td>
+        </tr>
+        <tr>
+            <td>
+                <div id="id31"></div>
+            </td>
+            <td>
+                <div id="id32"></div>
+            </td>
+            <td>
+                <div id="id33"></div>
+            </td>
+            <td>
+                <div id="id34"></div>
+            </td>
+            <td>
+                <div id="id35"></div>
+            </td>
+            <td>
+                <div id="id36"></div>
+            </td>
+            <td>
+                <div id="id37"></div>
+            </td>
+            <td>
+                <div id="id38"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="id41"></div>
+            </td>
+            <td>
+                <div id="id42"></div>
+            </td>
+            <td>
+                <div id="id43"></div>
+            </td>
+            <td>
+                <div id="id44"></div>
+            </td>
+            <td>
+                <div id="id45"></div>
+            </td>
+            <td>
+                <div id="id46"></div>
+            </td>
+            <td>
+                <div id="id47"></div>
+            </td>
+            <td>
+                <div id="id48"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="id51"></div></td>
+            <td>
+                <div id="id52"></div></td>
+            <td>
+                <div id="id53"></div></td>
+            <td>
+                <div id="id54"></div></td>
+            <td>
+                <div id="id55"></div></td>
+            <td>
+                <div id="id56"></div></td>
+            <td>
+                <div id="id57"></div></td>
+            <td>
+                <div id="id58"></div></td>
+        </tr>
+    </table>
     <div>
         <button type="button" onclick="resetGame();">Reset</button>
     </div>
 </div>
 
-
+@Scripts.Render("~/bundles/jquery")
 <script>
     var myCounter = 0;
     var vimg = 'http://i.imgur.com/TiPH3Uf.jpg';
@@ -198,4 +209,3 @@
         $("div[id^='id'][active=1]").html(vtagImg);
     }
 </script>
-
