@@ -2,11 +2,12 @@
 @{
     ViewBag.Title = "Demo Vietlott";
 }
-@*
-    <link href="~/odometer/themes/odometer-theme-default.css" rel="stylesheet" />    
-    <link href="~/odometer/themes/odometer-theme-minimal.css" rel="stylesheet"/>*@
-@*<link href="~/odometer/themes/odometer-theme-digital.css" rel="stylesheet" />*@
-<link href="~/odometer/themes/odometer-theme-car.css" rel="stylesheet" />
+
+
+<link href="~/odometer/themes/odometer-theme-digital.css" rel="stylesheet" />
+@*<link href="~/odometer/themes/odometer-theme-car.css" rel="stylesheet" />*@
+@*<link href="~/odometer/themes/odometer-theme-slot-machine.css" rel="stylesheet" />*@
+@*<link href="~/odometer/themes/odometer-theme-train-station.css" rel="stylesheet" />*@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/odometer/odometer.js"></script>
 @*<script src="~/odometer/odometer.min.js"></script>*@
@@ -41,7 +42,7 @@
 
 <br /><br />
 <div style="text-align: center; margin-top: 100px;" >
-    <button type="button" onclick="GenericNumber();">Random</button>
+    <button type="button" onclick="GenericNumber();">Random Number</button>
 </div>
 <script>
     var n1 = 0;
@@ -107,41 +108,40 @@
         var lstTemp = [];
 
         n1 = random1_45(lst.length);
-        //while (lst.contains(n1)) {
-        //    n1 = random1_45(lst.length);
-        //}
+        while (lstTemp.indexOf(n1) >= 0) {
+            n1 = random1_45(lst.length);
+        }
         lstTemp.push(n1);
 
         n2 = random1_45(lst.length);
-        //while (lst.contains(n2)) {
-        //    n2 = random1_45(lst.length);
-        //}
+        while (lstTemp.indexOf(n2) >= 0) {
+            n2 = random1_45(lst.length);
+        }
         lstTemp.push(n2);
 
         n3 = random1_45(lst.length);
-        //while (lst.contains(n3)) {
-        //    n3 = random1_45(lst.length);
-        //}
+        while (lstTemp.indexOf(n3) >= 0) {
+            n3 = random1_45(lst.length);
+        }
         lstTemp.push(n3);
 
         n4 = random1_45(lst.length);
-        //while (lst.contains(n4)) {
-        //    n4 = random1_45(lst.length);
-        //}
+        while (lstTemp.indexOf(n4) >= 0) {
+            n4 = random1_45(lst.length);
+        }
         lstTemp.push(n4);
 
         n5 = random1_45(lst.length);
-        //while (lst.contains(n5)) {
-        //    n5 = random1_45(lst.length);
-        //}
+        while (lstTemp.indexOf(n5) >= 0) {
+            n5 = random1_45(lst.length);
+        }
         lstTemp.push(n5);
 
         n6 = random1_45(lst.length);
-        //while (lst.contains(n6)) {
-        //    n6 = random1_45(lst.length);
-        //}
+        while (lstTemp.indexOf(n6) >= 0) {
+            n6 = random1_45(lst.length);
+        }
         lstTemp.push(n6);
-        //console.log(n1 + '-' + n2 + '-' + n3 + '-' + n4 + '-' + n5 + '-' + n6);
         reOrderValue(lstTemp);
     }
 
