@@ -226,6 +226,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\game.css" />
     <Content Include="Content\smartpaginator.css" />
+    <Content Include="Content\Styles\app.css" />
     <Content Include="Content\sweetalert2.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -343,6 +344,7 @@
     <Content Include="Views\PuzzleGame\Version1.cshtml" />
     <Content Include="Views\PuzzleGame\Version2.cshtml" />
     <Content Include="Views\VietLott\Index.cshtml" />
+    <Content Include="Views\VietLott\version1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

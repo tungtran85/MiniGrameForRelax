@@ -1,7 +1,6 @@
 ﻿
 @{
     ViewBag.Title = "Puzzle Game V2";
-
 }
 
 @section Styles {
@@ -39,30 +38,19 @@
     ];
 
     $(function() {
-        //InitPuzzle();
         LoadDVD();
     });
 
     function InitPuzzle() {
-        //console.log("Lenght dcData : " + dcData.length);
         var dcTemp = [];
         for (var j = 0; j < dcData.length; j++) {
             dcTemp.push(j);
         }
-        //console.log("Lenght dcTemp : " + dcTemp.length);
-        //debugger;
         for (var i = 0; i < dcData.length; i++) {
-            //console.log("Round : " + i);
-            //console.log(dcTemp);
             var vRandom = randomIntFromInterval(0, dcTemp.length - 1);
-            //console.log("Rand Index : " + vRandom);
-
-            //console.log("Rand Key : " + dcTemp[vRandom]);
-            //console.log("Value Rand dcData : " + dcData[dcTemp[vRandom]].value);
             $('#id_img_' + dcData[i].key).attr('src', dcData[dcTemp[vRandom]].value);
             $('#id_img_' + dcData[i].key).attr('index2', dcData[dcTemp[vRandom]].key);
             dcTemp.splice(vRandom, 1);
-            //console.log("Lenght dcTemp rest : " + dcTemp.length);
         }
     }
 
@@ -150,8 +138,7 @@
         var vId = $('#idimgFull').attr('dvdId');
         var vUrl = $('#idimgFull').attr('dvdUrl');
         $.get('@Url.Action("SplitImageUrl", "PuzzleGame")', { id: vId, imgUrl: vUrl }, function (response) {
-            //alert(response.exten);
-            //debugger;
+           
             dcData = [];
             var iCounter = 0;
             for (var i = 1; i < 5; i++)
@@ -168,7 +155,6 @@
                     iCounter += 1;
                 }
             }
-            //debugger;
             InitPuzzle();
         });
     }
@@ -177,9 +163,9 @@
 }
 
 <section class="container">
-    <table style="width: 900px;">
+    <table style="width: 1020px;">
         <tr>
-            <td style="width: 600px">
+            <td style="width: 500px">
                 <table style="border: 0;" id="idTableGame">
                     <tr>
                         <td>
@@ -251,15 +237,14 @@
                     </tr>
                 </table>
             </td>
-            <td style="width: 300px; text-align: right;">
-                <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="margin-top: 20px; width: 450px !important; height: 450px !important" />
-                <br /><br /><br />
+            <td style="width: 500px; text-align: right;">
+                <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="margin-top: 20px; width: 500px !important; height: 500px !important" />
+                <br /><br />
                 <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <button id="btnLoadDVDImage" type="button" onclick="LoadDVD();"> Refresh Image </button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <button id="btnSplitImage" type="button" onclick="SplitImages();"> Split Image </button>
-
+                &nbsp;
+                <button id="btnLoadDVDImage" type="button" onclick="LoadDVD();">Refresh</button>
+                &nbsp;
+                <button id="btnSplitImage" type="button" onclick="SplitImages();">Split</button>
             </td>
         </tr>
     </table>
