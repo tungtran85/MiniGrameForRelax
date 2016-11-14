@@ -5,34 +5,85 @@
 <h3>@ViewBag.Message</h3>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <p>Use this area to provide additional information.</p>
-<br/>
-<div id="idResult">
-    
-</div>
+<br />
+<div id="idResult1"></div>
+<br />
+<div id="idResult2"></div>
+
 <script>
-    $(function() {
-        //alert("working ^_^");
-        var data =
-        {
-            gameId :3,
-            drawId : 2,
-            dayPrize :'7/22/2016 12:00:00 AM',
-            type : 0
-        };
-         
-        $.ajax({
-            url: 'http://www.vietlott.vn/Ajax/PrevNextResultGameMega645',
-            type: "POST",
-            dataType: "html",
-            data: data,
-            cache: false,
-            success: function (data) {
-                //Fill div with results
-                $("#idResult").html(data);
-            },
-            error: function (xhr, status, error) {
-                alert(xhr.responseText);
-            }
+        $(function () {
+            //CallVietLottVN(0, 2, '7/20/2016');
+
+            //CallVietLottVN(1, 1, '7/20/2016');
+
+            CallVietLottVN(1, 2, '7/22/2016');
+
+            //CallVietLottVN(1, 3, '7/24/2016');
+            // drawId/3 == 0 + 3day
+            //else + 2day
+            //StartDate = 7/20/2016
         });
-    });
-</script>
+
+        function CallVietLottVN(type, drawId, dayPrize) {
+            var data =
+            {
+                gameId: 3,
+                drawId: drawId,
+                dayPrize: dayPrize,
+                type: type
+            };
+            //Next: Type=1, Back: Type=0
+            $.ajax({
+                url: 'http://www.vietlott.vn/Ajax/PrevNextResultGameMega645',
+                type: "POST",
+                dataType: "html",
+                data: data,
+                cache: false,
+                success: function (mydata) {
+                    debugger;
+                    //Fill div with results
+                    $("#idResult1").html(mydata);
+                    ParsehtmlgetNumber();
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+
+        function ParsehtmlgetNumber() {
+            //debugger;
+            var vResult = $('.result-number').innerText;
+            $('#idResult2').html(vResult);
+        }
+
+        function InitDemo() {
+            //alert("working ^_^");
+            //gameId:3
+            //drawId:1
+            //dayPrize:7/20/2016 12:00:00 AM
+            //type:0
+            var data =
+            {
+                gameId: 3,
+                drawId: 1,
+                dayPrize: '7/22/2016',
+                type: 0
+            };
+            //Next: Type=1, Back: Type=0
+            $.ajax({
+                url: 'http://www.vietlott.vn/Ajax/PrevNextResultGameMega645',
+                type: "POST",
+                dataType: "html",
+                data: data,
+                cache: false,
+                success: function (data) {
+                    //Fill div with results
+                    $("#idResult").html(data);
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    </script>

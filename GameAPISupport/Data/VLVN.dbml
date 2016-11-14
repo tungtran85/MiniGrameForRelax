@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DemoDVD" Class="VLVNDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=52.77.65.216\SQL;Initial Catalog=DemoDVD;User ID=chum" SettingsObjectName="GameAPISupport.Properties.Settings" SettingsPropertyName="DemoDVDConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.VietlottVN" Member="VietlottVNs">
+    <Type Name="VietlottVN">
+      <Column Name="VietLottID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DrawId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DayPrize" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FullBlockNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOne" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberTwo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberThree" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberFour" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberFive" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberSix" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImportDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
