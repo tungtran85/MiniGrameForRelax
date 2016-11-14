@@ -463,7 +463,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2016 20:01:15</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/13/2016 20:44:29</publishTime>
+      <publishTime>11/13/2016 22:14:02</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>11/13/2016 20:01:15</publishTime>
@@ -484,13 +484,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2016 20:01:15</publishTime>
     </File>
     <File Include="Views/PuzzleGame/Index.cshtml">
-      <publishTime>11/13/2016 20:44:21</publishTime>
+      <publishTime>11/13/2016 22:29:59</publishTime>
     </File>
     <File Include="Views/PuzzleGame/Version1.cshtml">
       <publishTime>11/13/2016 20:01:15</publishTime>
     </File>
     <File Include="Views/PuzzleGame/Version2.cshtml">
-      <publishTime>11/13/2016 20:01:15</publishTime>
+      <publishTime>11/13/2016 21:35:33</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/13/2016 20:01:15</publishTime>
@@ -505,10 +505,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2016 20:01:15</publishTime>
     </File>
     <File Include="Views/VietLott/Index.cshtml">
-      <publishTime>11/13/2016 20:31:13</publishTime>
+      <publishTime>11/13/2016 21:43:22</publishTime>
     </File>
     <File Include="Views/VietLott/version1.cshtml">
-      <publishTime>11/13/2016 20:54:52</publishTime>
+      <publishTime>11/13/2016 21:10:37</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/13/2016 20:01:15</publishTime>

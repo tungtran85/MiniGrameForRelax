@@ -3,5 +3,36 @@
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
-
+<script src="~/Scripts/jquery-1.10.2.js"></script>
 <p>Use this area to provide additional information.</p>
+<br/>
+<div id="idResult">
+    
+</div>
+<script>
+    $(function() {
+        //alert("working ^_^");
+        var data =
+        {
+            gameId :3,
+            drawId : 2,
+            dayPrize :'7/22/2016 12:00:00 AM',
+            type : 0
+        };
+         
+        $.ajax({
+            url: 'http://www.vietlott.vn/Ajax/PrevNextResultGameMega645',
+            type: "POST",
+            dataType: "html",
+            data: data,
+            cache: false,
+            success: function (data) {
+                //Fill div with results
+                $("#idResult").html(data);
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+</script>
