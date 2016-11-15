@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="VLVN">
   <DataContextMoniker Name="/VLVNDataContext" />
   <nestedChildShapes>
-    <classShape Id="4ee2d4cd-f997-40d5-928f-118bb006cebf" absoluteBounds="1.5, 0.875, 2, 2.9247054036458331">
+    <classShape Id="9c3ea5f3-f069-4576-a289-dbf733e89afb" absoluteBounds="4, 1.625, 2, 2.9247054036458331">
       <DataClassMoniker Name="/VLVNDataContext/VietlottVN" />
       <nestedChildShapes>
-        <elementListCompartment Id="426b257d-e3c4-4de1-a4e8-42f0e75de997" absoluteBounds="1.5149999999999997, 1.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fb22a5dc-e12d-4a33-9f80-0ceb10c44daa" absoluteBounds="4.015, 2.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

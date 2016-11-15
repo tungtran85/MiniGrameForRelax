@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DemoDVD" Class="VLVNDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=52.77.65.216\SQL;Initial Catalog=DemoDVD;User ID=chum" SettingsObjectName="GameAPISupport.Properties.Settings" SettingsPropertyName="DemoDVDConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=52.77.65.216\SQL;Initial Catalog=DemoDVD;Persist Security Info=True;User ID=chum" SettingsObjectName="GameAPISupport.Properties.Settings" SettingsPropertyName="DemoDVDConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.VietlottVN" Member="VietlottVNs">
     <Type Name="VietlottVN">
-      <Column Name="VietLottID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="VietLottID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="DrawId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DayPrize" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="FullBlockNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
@@ -15,4 +15,10 @@
       <Column Name="ImportDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Function Name="dbo.CountFrequencyNumber" Method="CountFrequencyNumber">
+    <Parameter Name="myNumber" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CountFrequencyNumberResult">
+      <Column Name="total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

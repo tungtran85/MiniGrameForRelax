@@ -36,7 +36,7 @@ namespace GameAPISupport.Data
     #endregion
 		
 		public VLVNDataContext() : 
-				base(global::GameAPISupport.Properties.Settings.Default.DemoDVDConnectionString, mappingSource)
+				base(global::GameAPISupport.Properties.Settings.Default.DemoDVDConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -71,6 +71,13 @@ namespace GameAPISupport.Data
 			{
 				return this.GetTable<VietlottVN>();
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CountFrequencyNumber")]
+		public ISingleResult<CountFrequencyNumberResult> CountFrequencyNumber([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> myNumber)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), myNumber);
+			return ((ISingleResult<CountFrequencyNumberResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -135,7 +142,7 @@ namespace GameAPISupport.Data
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VietLottID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VietLottID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int VietLottID
 		{
 			get
@@ -372,6 +379,32 @@ namespace GameAPISupport.Data
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class CountFrequencyNumberResult
+	{
+		
+		private System.Nullable<int> _total;
+		
+		public CountFrequencyNumberResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Int")]
+		public System.Nullable<int> total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this._total = value;
+				}
 			}
 		}
 	}

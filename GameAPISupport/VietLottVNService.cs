@@ -60,8 +60,11 @@ namespace GameAPISupport
         /// <returns></returns>
         public List<VietlottVNDto> GetListByAmount(int pageSize, int pageIndex)
         {
-            var lst = _dataContext.VietlottVNs.Skip(pageSize*pageIndex).Take(pageSize);
-            if (lst.Any())
+            var lst = _dataContext.VietlottVNs
+                .OrderByDescending(o => o.DayPrize)
+                .Skip(pageSize*pageIndex).Take(pageSize).ToList();
+                
+            if (lst.Count > 0)
             {
                 return lst.Select(obj => new VietlottVNDto()
                 {
@@ -78,6 +81,20 @@ namespace GameAPISupport
                 }).ToList();
             }
             return new List<VietlottVNDto>();
+        }
+
+        public int[] GetFrequencyNumbers()
+        {
+            int[] arr = new int[45];
+            for (int i = 0; i < 45; i++)
+            {
+                var objNumber = _dataContext.CountFrequencyNumber(i + 1).FirstOrDefault();
+                if (objNumber?.total != null)
+                {
+                    arr[i] = objNumber.total.Value;
+                }
+            }
+            return arr;
         }
     }
 }
