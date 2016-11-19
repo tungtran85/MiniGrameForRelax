@@ -290,6 +290,9 @@
     </Content>
     <None Include="Properties\PublishProfiles\RelaxMiniGame.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\counter_\countid.js" />
+    <Content Include="Scripts\counter_\countid.min.js" />
+    <Content Include="Scripts\game-monkey-find-number\index.js" />
     <Content Include="Scripts\game.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
