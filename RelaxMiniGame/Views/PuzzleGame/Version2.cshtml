@@ -14,15 +14,15 @@
             padding: 1px;
         }
     </style>
-<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 }
 
 @section Scripts {
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="~/Scripts/counter_/countid.js"></script>
-<script src="~/Scripts/counter_/countid.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/counter_/countid.js"></script>
+    <script src="~/Scripts/counter_/countid.min.js"></script>
     <script>
         var dcData = [
             { key: '11', value: '/Images/PuzzleImages_/Pic_01.jpg' },
@@ -43,8 +43,8 @@
             { key: '44', value: '/Images/PuzzleImages_/Blank.png' }
         ];
 
-        $(function() {
-            LoadDVD();
+        $(function () {
+            //LoadDVD();
         });
 
         function InitPuzzle() {
@@ -67,6 +67,7 @@
                 MoveSelectImage(idDes, idSource);
                 if (IsWin()) {
                     alert("Dzu Qua, Win rui ban ^_^.");
+                    ResetGame();
                 }
             } else {
                 alert("Biet choi khong dzi troi? ^_^");
@@ -117,7 +118,7 @@
 
         function IsWin() {
             var iswin = true;
-            $('#idTableGame img').each(function() {
+            $('#idTableGame img').each(function () {
                 if ($(this).attr('index1') !== $(this).attr('index2')) {
                     iswin = false;
                 }
@@ -132,11 +133,17 @@
         function ResetGame() {
             console.log("Reset Game ^_^");
             InitPuzzle();
+            
+            $('#idSwapCounter').attr('currentnumber', '0');
+            $('#idSwapCounter').html('0');
+            date = null;
+            $('#idStartGame').show();
+            startGame();
         };
 
         function LoadDVD() {
-            $.getJSON("http://dvd.kachinlina.com/Home/GenerateRandomImage/1", function(lstImg) {
-                $.each(lstImg, function(i, value) {
+            $.getJSON("http://dvd.kachinlina.com/Home/GenerateRandomImage/1", function (lstImg) {
+                $.each(lstImg, function (i, value) {
                     $('#idimgFull').attr('src', value.Name);
                     $('#idimgFull').attr('myId', value.Id);
                     $('#idimgFull').attr('dvdId', value.Id);
@@ -149,7 +156,7 @@
             //alert("Not implement yet ^_^ !!!");
             var vId = $('#idimgFull').attr('dvdId');
             var vUrl = $('#idimgFull').attr('dvdUrl');
-            $.get('@Url.Action("SplitImageUrl", "PuzzleGame")', { id: vId, imgUrl: vUrl }, function(response) {
+            $.get('@Url.Action("SplitImageUrl", "PuzzleGame")', { id: vId, imgUrl: vUrl }, function (response) {
 
                 dcData = [];
                 var iCounter = 0;
@@ -176,110 +183,125 @@
             this.setSeconds(this.getSeconds() + h);
             return this;
         }
-        var date = new Date().addSeconds(900) / 1000;
-        $('.timer2').countid({
-            clock: true,
-            dateTime: date,
-            dateTplRemaining: "%H:%M:%S",
-            dateTplElapsed: "%H:%M:%S",
-            complete: function(el) {
-                //el.animate({ 'font-size': '50px' });
-                alert("Gameover ^_^");
-            }
-        });
+        var date = new Date();
 
+        function startGame() {
+            date = new Date().addSeconds(300) / 1000;
+            $('.timer2').countid({
+                clock: true,
+                dateTime: date,
+                dateTplRemaining: "%H:%M:%S",
+                dateTplElapsed: "%H:%M:%S",
+                complete: function (el) {
+                    //el.animate({ 'font-size': '50px' });
+                    alert("Gameover ^_^");
+                    ResetGame();
+                }
+            });
+        }
     </script>
 }
-<div class="jquery-script-clear"></div>
+@*<div class="jquery-script-clear"></div>*@
 <section class="container">
-    <table style="width: 1020px;">
+    <table style="width: 100%;">
         <tr>
-            <td style="width: 500px">
-                <table style="border: 0;" id="idTableGame">
-                    <tr>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_11" myrow="1" mycol="1" index1="11" index2="" src="~/Images/PuzzleImages_/Pic_01.jpg"/>
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_12" myrow="1" mycol="2" index1="12" index2="" src="~/Images/PuzzleImages_/Pic_02.jpg"/>
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_13" myrow="1" mycol="3" index1="13" index2="" src="~/Images/PuzzleImages_/Pic_03.jpg"/>
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_14" myrow="1" mycol="4" index1="14" index2="" src="~/Images/PuzzleImages_/Pic_04.jpg"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_21" myrow="2" mycol="1" index1="21" index2="" src="~/Images/PuzzleImages_/Pic_05.jpg"/>
+            <td style="width: 50%">
+                <div style="float: left; margin-left: 5px;">
+                    <table style="border: 0;" id="idTableGame">
+                        <tr>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_11" myrow="1" mycol="1" index1="11" index2="" src="~/Images/PuzzleImages_/Pic_01.jpg" />
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_12" myrow="1" mycol="2" index1="12" index2="" src="~/Images/PuzzleImages_/Pic_02.jpg" />
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_13" myrow="1" mycol="3" index1="13" index2="" src="~/Images/PuzzleImages_/Pic_03.jpg" />
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_14" myrow="1" mycol="4" index1="14" index2="" src="~/Images/PuzzleImages_/Pic_04.jpg" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_21" myrow="2" mycol="1" index1="21" index2="" src="~/Images/PuzzleImages_/Pic_05.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_22" myrow="2" mycol="2" index1="22" index2="" src="~/Images/PuzzleImages_/Pic_06.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_22" myrow="2" mycol="2" index1="22" index2="" src="~/Images/PuzzleImages_/Pic_06.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_23" myrow="2" mycol="3" index1="23" index2="" src="~/Images/PuzzleImages_/Pic_07.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_23" myrow="2" mycol="3" index1="23" index2="" src="~/Images/PuzzleImages_/Pic_07.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_24" myrow="2" mycol="4" index1="24" index2="" src="~/Images/PuzzleImages_/Pic_08.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_24" myrow="2" mycol="4" index1="24" index2="" src="~/Images/PuzzleImages_/Pic_08.jpg" />
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_31" myrow="3" mycol="1" index1="31" index2="" src="~/Images/PuzzleImages_/Pic_09.jpg"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_31" myrow="3" mycol="1" index1="31" index2="" src="~/Images/PuzzleImages_/Pic_09.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_32" myrow="3" mycol="2" index1="32" index2="" src="~/Images/PuzzleImages_/Pic_10.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_32" myrow="3" mycol="2" index1="32" index2="" src="~/Images/PuzzleImages_/Pic_10.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_33" myrow="3" mycol="3" index1="33" index2="" src="~/Images/PuzzleImages_/Pic_11.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_33" myrow="3" mycol="3" index1="33" index2="" src="~/Images/PuzzleImages_/Pic_11.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_34" myrow="3" mycol="4" index1="34" index2="" src="~/Images/PuzzleImages_/Pic_12.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_34" myrow="3" mycol="4" index1="34" index2="" src="~/Images/PuzzleImages_/Pic_12.jpg" />
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_41" myrow="4" mycol="1" index1="41" index2="" src="~/Images/PuzzleImages_/Pic_13.jpg"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_41" myrow="4" mycol="1" index1="41" index2="" src="~/Images/PuzzleImages_/Pic_13.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_42" myrow="4" mycol="2" index1="42" index2="" src="~/Images/PuzzleImages_/Pic_14.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_42" myrow="4" mycol="2" index1="42" index2="" src="~/Images/PuzzleImages_/Pic_14.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_43" myrow="4" mycol="3" index1="43" index2="" src="~/Images/PuzzleImages_/Pic_15.jpg"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_43" myrow="4" mycol="3" index1="43" index2="" src="~/Images/PuzzleImages_/Pic_15.jpg" />
 
-                        </td>
-                        <td>
-                            <img onclick="moveImage(this);" id="id_img_44" myrow="4" mycol="4" index1="44" index2="" src="~/Images/PuzzleImages_/Blank.png"/>
+                            </td>
+                            <td>
+                                <img onclick="moveImage(this);" id="id_img_44" myrow="4" mycol="4" index1="44" index2="" src="~/Images/PuzzleImages_/Blank.png" />
 
-                        </td>
-                    </tr>
-                </table>
+                            </td>
+                        </tr>
+                    </table>
 
-                <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
-                 
-                <label  >Swap Count:</label>
-                <h3 id="idSwapCounter" currentnumber="0">0</h3>
-                <label  >Count down:</label>
-                <h3   class='timer2'></h3>
-                     
+                </div>
             </td>
-            <td style="width: 500px; text-align: right;">
-                <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="margin-top: 20px; width: 500px !important; height: 500px !important" />
-                <br />
-                <button id="btnLoadDVDImage" type="button" onclick="LoadDVD();">Refresh</button>
-                &nbsp;
-                <button id="btnSplitImage" type="button" onclick="SplitImages();">Split</button>
+            <td>
+                <div>
+                    <div id="idStartGame" style="display: none; margin-left: 5px; margin-right: 5px; margin-top: 5px;">
+                        <label for="idSwapCounter">Swap Count:</label>
+                        <h3 id="idSwapCounter" currentnumber="0">0</h3>
+                        <br/>
+                        <label for="idCountDown">Count down:</label>
+                        <h3 id="idCountDown" class='timer2'></h3>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
+                        <br /><br />
+                        <button id="btnLoadDVDImage" type="button" onclick="LoadDVD();">Change Image</button>
+                        <br /><br />
+                        <button id="btnSplitImage" type="button" onclick="SplitImages();">Split</button>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style="float: right; margin-right: 5px;">
+                    <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="width: 500px !important; height: 500px !important" />
+                </div>
             </td>
         </tr>
     </table>

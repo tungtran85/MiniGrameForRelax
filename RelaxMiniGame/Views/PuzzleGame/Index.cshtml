@@ -14,9 +14,15 @@
             padding: 1px;
         }
     </style>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 }
 
 @section Scripts {
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/counter_/countid.js"></script>
+    <script src="~/Scripts/counter_/countid.min.js"></script>
     <script>
         var dcData = [
             { key: '11', value: '/Images/PuzzleImages_/Pic_01.jpg' },
@@ -61,6 +67,7 @@
                 MoveSelectImage(idDes, idSource);
                 if (IsWin()) {
                     alert("Dzu Qua, Win rui ban ^_^.");
+                    ResetGame();
                 }
             } else {
                 alert("Biet choi khong dzi troi? ^_^");
@@ -76,6 +83,12 @@
 
             $('#' + idSource).attr('index2', tmpIndex2);
             $('#' + idSource).attr('src', tmpsrc);
+
+            var vCounter = parseInt($('#idSwapCounter').attr('currentnumber'), 10);
+            vCounter = vCounter + 1;
+            //console.log(vCounter);
+            $('#idSwapCounter').html(vCounter);
+            $('#idSwapCounter').attr('currentnumber', vCounter);
         }
 
         function CheckValidMove(idDes, idSource) {
@@ -120,6 +133,9 @@
         function ResetGame() {
             console.log("Reset Game ^_^");
             InitPuzzle();
+            startGame();
+            $('#idSwapCounter').attr('currentnumber', '0');
+            $('#idStartGame').show();
         };
 
         function LoadDVD() {
@@ -157,14 +173,36 @@
             });
         }
 
+
+    </script>
+    <script>
+        Date.prototype.addSeconds = function (h) {
+            this.setSeconds(this.getSeconds() + h);
+            return this;
+        }
+
+        function startGame() {
+            var date = new Date().addSeconds(300) / 1000;
+            $('.timer2').countid({
+                clock: true,
+                dateTime: date,
+                dateTplRemaining: "%H:%M:%S",
+                dateTplElapsed: "%H:%M:%S",
+                complete: function (el) {
+                    //el.animate({ 'font-size': '50px' });
+                    alert("Gameover ^_^");
+                    ResetGame();
+                }
+            });
+        }
     </script>
 }
-
+@*<div class="jquery-script-clear"></div>*@
 <section class="container">
-    <table style="width: 1020px;">
+    <table style="width: 100%;">
         <tr>
-            <td style="width: 500px">
-                <div style="margin-top: 3px;">
+            <td style="width: 50%">
+                <div style="float: left; margin-left: 5px;">
                     <table style="border: 0;" id="idTableGame">
                         <tr>
                             <td>
@@ -235,17 +273,30 @@
                             </td>
                         </tr>
                     </table>
-                    <button id="btnReset" type="button" onclick="ResetGame();"> Random Images </button>
+
                 </div>
             </td>
-            <td style="width: 500px; text-align: right;">
-                <div style="margin-top: 3px;">
-                    <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="margin-top: 20px; width: 500px !important; height: 500px !important" />
-                    <br />
-                    &nbsp;
-                    <button id="btnLoadDVDImage" type="button" onclick="LoadDVD();">Refresh</button>
-                    &nbsp;
-                    <button id="btnSplitImage" type="button" onclick="SplitImages();">Split</button>
+            <td>
+                <div>
+                    <div id="idStartGame" style="display: none; margin-left: 5px; margin-right: 5px; margin-top: 5px;">
+                        <label for="idSwapCounter">Swap Count:</label>
+                        <h3 id="idSwapCounter" currentnumber="0">0</h3>
+                        <br />
+                        <label for="idCountDown">Count down:</label>
+                        <h3 id="idCountDown" class='timer2'></h3>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <button id="btnReset" type="button" onclick="ResetGame();"> Reset </button>
+                        <br /><br />
+                        <button id="btnLoadDVDImage" type="button" onclick="LoadDVD();">Change Image</button>
+                        <br /><br />
+                        <button id="btnSplitImage" type="button" onclick="SplitImages();">Split</button>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style="float: right; margin-right: 5px;">
+                    <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="width: 500px !important; height: 500px !important" />
                 </div>
             </td>
         </tr>
