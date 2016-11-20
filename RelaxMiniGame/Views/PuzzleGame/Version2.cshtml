@@ -199,6 +199,11 @@
                 }
             });
         }
+
+        function imgError(e) {
+            console.log('Load image fail ^_^');
+            LoadDVD();
+        }
     </script>
 }
 @*<div class="jquery-script-clear"></div>*@
@@ -300,7 +305,8 @@
             </td>
             <td>
                 <div style="float: right; margin-right: 5px;">
-                    <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" style="width: 500px !important; height: 500px !important" />
+                    <img id="idimgFull" src="~/Images/PuzzleImages_/Pic.jpg" onerror="imgError(this);"
+                         style="width: 500px !important; height: 500px !important" />
                 </div>
             </td>
         </tr>
