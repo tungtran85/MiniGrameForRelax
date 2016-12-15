@@ -96,5 +96,19 @@ namespace GameAPISupport
             }
             return arr;
         }
+
+        public List<NumberCustom> GetListNumberExpose()
+        {
+            List<NumberCustom> lstNumberVietLottSupport = new List<NumberCustom>();
+            for (int i = 0; i < 45; i++)
+            {
+                 var obj = new NumberCustom();
+                obj.NumberVietLott = i + 1;
+                var result = _dataContext.CalculateNumber(obj.NumberVietLott).FirstOrDefault();
+                obj.FrequenceExpose = result?.Total ?? 0;
+                lstNumberVietLottSupport.Add(obj);
+            }
+            return lstNumberVietLottSupport;
+        }
     }
 }

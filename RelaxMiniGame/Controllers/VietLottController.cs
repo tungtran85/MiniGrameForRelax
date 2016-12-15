@@ -17,8 +17,17 @@ namespace RelaxMiniGame.Controllers
         }
         public ActionResult version1()
         {
-            VietLottVNService objBig = new VietLottVNService();
-            VietlottVNViewModel objViewModel = new VietlottVNViewModel();
+            var objBig = new VietLottVNService();
+            var objViewModel = new VietlottVNViewModel()
+            {
+                ListFrequencyNumbers = new List<int>()
+            };
+            objViewModel.ListNumberCustom = objBig.GetListNumberExpose().OrderBy(o=>o.FrequenceExpose).ToList();
+            for (int i = 0; i < 6; i++)
+            {
+                objViewModel.ListFrequencyNumbers.Add(objViewModel.ListNumberCustom[i].NumberVietLott);
+            }
+            objViewModel.ListFrequencyNumbers = objViewModel.ListFrequencyNumbers.OrderBy(o => o).ToList();
             //objViewModel.ListFrequencyNumbers = objBig.GetFrequencyNumbers().ToList();
             return View(objViewModel);
         }
@@ -29,6 +38,7 @@ namespace RelaxMiniGame.Controllers
             var lst = objBig.GetFrequencyNumbers().ToList();
             return Json(new { success=true,mydata= lst }, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult GetTop10()
         {
             VietLottVNService objBig = new VietLottVNService();

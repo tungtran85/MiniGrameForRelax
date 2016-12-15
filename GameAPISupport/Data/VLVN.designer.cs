@@ -79,6 +79,13 @@ namespace GameAPISupport.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), myNumber);
 			return ((ISingleResult<CountFrequencyNumberResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CalculateNumber")]
+		public ISingleResult<CalculateNumberResult> CalculateNumber([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumberCalculate", DbType="Int")] System.Nullable<int> numberCalculate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), numberCalculate);
+			return ((ISingleResult<CalculateNumberResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VietlottVN")]
@@ -404,6 +411,32 @@ namespace GameAPISupport.Data
 				if ((this._total != value))
 				{
 					this._total = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CalculateNumberResult
+	{
+		
+		private int _Total;
+		
+		public CalculateNumberResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int NOT NULL")]
+		public int Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
 				}
 			}
 		}

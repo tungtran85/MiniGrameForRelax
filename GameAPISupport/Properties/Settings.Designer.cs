@@ -26,10 +26,22 @@ namespace GameAPISupport.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=52.77.65.216\\SQL;Initial Catalog=DemoDVD;User ID=chum")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=52.77.65.216\\SQL;Initial Catalog=DemoDVD;Persist Security Info=True;U" +
+            "ser ID=chum")]
         public string DemoDVDConnectionString {
             get {
                 return ((string)(this["DemoDVDConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=52.77.65.216\\SQL;Initial Catalog=DemoDVD;Persist Security Info=True;U" +
+            "ser ID=chum;Password=taolachum")]
+        public string DemoDVDConnectionString1 {
+            get {
+                return ((string)(this["DemoDVDConnectionString1"]));
             }
         }
     }
