@@ -110,5 +110,10 @@ namespace GameAPISupport
             }
             return lstNumberVietLottSupport;
         }
+
+        public int TotalRows()
+        {
+            return _dataContext.VietlottVNs.Count();
+        }
     }
 }

@@ -8,12 +8,18 @@ namespace RelaxMiniGame.Models
 {
     public class VietlottVNViewModel
     {
-        public List<int> ListFrequencyNumbers { get; set; }
+        public List<int> ListFrequencyNumbersMin { get; set; }
+
+        public List<int> ListFrequencyNumbersMax { get; set; }
+
         public List<NumberCustom> ListNumberCustom { get; set; }
+
+        public int TotalRound { get; set; }
 
         public VietlottVNViewModel()
         {
-            ListFrequencyNumbers = new List<int>();
+            ListFrequencyNumbersMin = new List<int>();
+            ListFrequencyNumbersMax = new List<int>();
             ListNumberCustom = new List<NumberCustom>();
         }
 

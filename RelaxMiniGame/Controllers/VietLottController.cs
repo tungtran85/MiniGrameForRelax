@@ -20,15 +20,23 @@ namespace RelaxMiniGame.Controllers
             var objBig = new VietLottVNService();
             var objViewModel = new VietlottVNViewModel()
             {
-                ListFrequencyNumbers = new List<int>()
+                ListFrequencyNumbersMax = new List<int>(),
+                ListFrequencyNumbersMin = new List<int>(),
+                TotalRound =  objBig.TotalRows()
             };
             objViewModel.ListNumberCustom = objBig.GetListNumberExpose().OrderBy(o=>o.FrequenceExpose).ToList();
             for (int i = 0; i < 6; i++)
             {
-                objViewModel.ListFrequencyNumbers.Add(objViewModel.ListNumberCustom[i].NumberVietLott);
+                objViewModel.ListFrequencyNumbersMin.Add(objViewModel.ListNumberCustom[i].NumberVietLott);
             }
-            objViewModel.ListFrequencyNumbers = objViewModel.ListFrequencyNumbers.OrderBy(o => o).ToList();
-            //objViewModel.ListFrequencyNumbers = objBig.GetFrequencyNumbers().ToList();
+            int l = objViewModel.ListNumberCustom.Count;
+            for (int j = 1; j <= 6; j++)
+            {
+                objViewModel.ListFrequencyNumbersMax.Add(objViewModel.ListNumberCustom[l-j].NumberVietLott);
+            }
+            objViewModel.ListFrequencyNumbersMin = objViewModel.ListFrequencyNumbersMin.OrderBy(o => o).ToList();
+            objViewModel.ListFrequencyNumbersMax = objViewModel.ListFrequencyNumbersMax.OrderBy(o => o).ToList();
+            
             return View(objViewModel);
         }
 
