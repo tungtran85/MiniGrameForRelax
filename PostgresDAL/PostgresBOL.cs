@@ -14,10 +14,11 @@ namespace PostgresDAL
         public static void Open()
         {
             string connectionString =
-                "Server=139.162.68.24;" +
-                "Database=DemoDVD;" +
-                "User ID=postgres;" +
-                "Password=Tung@123456;";
+            "Server=localhost;" +
+            "Database=test;" +
+            "User ID=postgres;" +
+            "Password=postgres;";
+
             dbcon = new NpgsqlConnection(connectionString);
             dbcon.Open();
             dbcmd = dbcon.CreateCommand();
@@ -93,11 +94,10 @@ namespace PostgresDAL
 
         public static bool CheckExists(DateTime dt, string fullNumber)
         {
-            NpgsqlDataAdapter myDataAdapter = new NpgsqlDataAdapter("SELECT * FROM public.\"VietlottVN\" where FullBlockNumber=" + fullNumber + " and DayPrize=" + dt + ";", dbcon);
+            NpgsqlDataAdapter myDataAdapter = new NpgsqlDataAdapter("SELECT * FROM public.\"VietlottVN\" where public.\"VietlottVN\".\"FullBlockNumber\" = '" + fullNumber + "' and public.\"VietlottVN\".\"DayPrize\" = '" + dt + "';", dbcon);
             DataSet ds = new DataSet();
             myDataAdapter.Fill(ds, "VietlottVNs");
-            return false;
+            return ds.Tables["VietlottVNs"].Rows.Count > 0;
         }
-
     }
 }

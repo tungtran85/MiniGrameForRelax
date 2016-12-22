@@ -9,8 +9,8 @@ namespace DemoImportVietLottVN
     {
         static void Main(string[] args)
         {
-            LookupVietlotVN();
-            //ImportOnePageVietlottVN(1);
+            //LookupVietlotVN();
+            ImportOnePageVietlottVN(1);
             //Demo();
         }
 
