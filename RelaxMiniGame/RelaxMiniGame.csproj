@@ -363,9 +363,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameAPISupport\GameAPISupport.csproj">
-      <Project>{2a65662d-e959-4c14-bf1b-de8a0fd5fb96}</Project>
-      <Name>GameAPISupport</Name>
+    <ProjectReference Include="..\PostgresDAL\PostgresDAL.csproj">
+      <Project>{34484677-ae6c-4994-8637-d588a3e5e6c4}</Project>
+      <Name>PostgresDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

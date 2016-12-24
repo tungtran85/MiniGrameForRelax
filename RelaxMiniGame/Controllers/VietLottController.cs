@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using GameAPISupport;
+using PostgresDAL;
 using RelaxMiniGame.Models;
 
 namespace RelaxMiniGame.Controllers
@@ -15,9 +15,11 @@ namespace RelaxMiniGame.Controllers
         {
             return View();
         }
+
         public ActionResult version1()
         {
-            var objBig = new VietLottVNService();
+            //var objBig = new VietLottVNService();
+            var objBig = new PostgresServices();
             var objViewModel = new VietlottVNViewModel()
             {
                 ListFrequencyNumbersMax = new List<int>(),
@@ -42,15 +44,16 @@ namespace RelaxMiniGame.Controllers
 
         public ActionResult GetFrequencyNumber()
         {
-            VietLottVNService objBig = new VietLottVNService();
+            //VietLottVNService objBig = new VietLottVNService();
+            var objBig = new PostgresServices();
             var lst = objBig.GetFrequencyNumbers().ToList();
             return Json(new { success=true,mydata= lst }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetTop10()
         {
-            VietLottVNService objBig = new VietLottVNService();
-            var lst = objBig.GetListByAmount(10, 0);
+            var objBig = new PostgresServices();
+            var lst = objBig.GetListByAmount();
             var result = lst.Select(o => new MyItem()
             {
                 Mykey = o.DayPrize.ToShortDateString(),

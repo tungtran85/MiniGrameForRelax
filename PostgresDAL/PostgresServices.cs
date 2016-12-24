@@ -13,6 +13,7 @@ namespace PostgresDAL
         {
             ;
         }
+
         public void DemoInertVietLott()
         {
             PostgresBOL.Open();
@@ -86,6 +87,70 @@ namespace PostgresDAL
                 PostgresBOL.InsertVietLottVN(pgVietLottVn);
             }
             PostgresBOL.Close();
+        }
+
+        public int TotalRows()
+        {
+            int totalRows = 0;
+            PostgresBOL.Open();
+            totalRows = PostgresBOL.TotalRows();
+            PostgresBOL.Close();
+            return totalRows;
+        }
+
+        public List<NumberCustom> GetListNumberExpose()
+        {
+            PostgresBOL.Open();
+            List<NumberCustom> lstNumberVietLottSupport = new List<NumberCustom>();
+            for (int i = 0; i < 45; i++)
+            {
+                var obj = new NumberCustom();
+                obj.NumberVietLott = i + 1;
+                var result = PostgresBOL.CalculateNumber(obj.NumberVietLott);
+                //_dataContext.CalculateNumber(obj.NumberVietLott).FirstOrDefault();
+                obj.FrequenceExpose = result;
+                lstNumberVietLottSupport.Add(obj);
+            }
+            return lstNumberVietLottSupport;
+        }
+
+        public int[] GetFrequencyNumbers()
+        {
+            PostgresBOL.Open();
+            int[] arr = new int[45];
+            for (int i = 0; i < 45; i++)
+            {
+                var objNumber = PostgresBOL.CalculateNumber(i + 1);
+                arr[i] = objNumber;
+            }
+            PostgresBOL.Close();
+            return arr;
+        }
+
+        public List<VietlottVNDto> GetListByAmount()
+        {
+            var lst =  new List<VietlottVNDto>();
+            PostgresBOL.Open();
+            lst = PostgresBOL.GetTop10();
+            
+            if (lst.Count > 0)
+            {
+                return lst.Select(obj => new VietlottVNDto()
+                {
+                    DrawId = obj.DrawId,
+                    DayPrize = obj.DayPrize,
+                    FullBlockNumber = obj.FullBlockNumber,
+                    ImportDate = obj.ImportDate,
+                    NumberOne = obj.NumberOne,
+                    NumberTwo = obj.NumberTwo,
+                    NumberThree = obj.NumberThree,
+                    NumberFour = obj.NumberFour,
+                    NumberFive = obj.NumberFive,
+                    NumberSix = obj.NumberSix
+                }).ToList();
+            }
+            PostgresBOL.Close();
+            return new List<VietlottVNDto>();
         }
     }
 }

@@ -99,5 +99,61 @@ namespace PostgresDAL
             myDataAdapter.Fill(ds, "VietlottVNs");
             return ds.Tables["VietlottVNs"].Rows.Count > 0;
         }
+
+        public static int TotalRows()
+        {
+            NpgsqlDataAdapter myDataAdapter = new NpgsqlDataAdapter("SELECT * FROM public.\"VietlottVN\";", dbcon);
+            DataSet ds = new DataSet();
+            myDataAdapter.Fill(ds, "VietlottVNs");
+            return ds.Tables["VietlottVNs"].Rows.Count;
+        }
+
+        public static int CalculateNumber(int number)
+        {
+            NpgsqlDataAdapter myDataAdapter = new NpgsqlDataAdapter("SELECT * FROM public.\"VietlottVN\" " +
+                                                                    "where public.\"VietlottVN\".\"NumberOne\" = '" + number + "'" +
+                                                                    " OR public.\"VietlottVN\".\"NumberTwo\" = '" + number + "'" +
+                                                                    " OR public.\"VietlottVN\".\"NumberThree\" = '" + number + "'" +
+                                                                    " OR public.\"VietlottVN\".\"NumberFour\" = '" + number + "'" +
+                                                                    " OR public.\"VietlottVN\".\"NumberFive\" = '" + number + "'" +
+                                                                    " OR public.\"VietlottVN\".\"NumberSix\" = '" + number + "';", dbcon);
+            DataSet ds = new DataSet();
+            myDataAdapter.Fill(ds, "VietlottVNs");
+            int totalRowns = ds.Tables["VietlottVNs"].Rows.Count;
+            return totalRowns;
+        }
+
+        public static List<VietlottVNDto> GetTop10()
+        {
+            var lst = new List<VietlottVNDto>();
+            NpgsqlDataAdapter myDataAdapter = new NpgsqlDataAdapter("SELECT * FROM public.\"VietlottVN\" order by public.\"VietlottVN\".\"DayPrize\" desc LIMIT 10;", dbcon);
+            DataSet ds = new DataSet();
+            myDataAdapter.Fill(ds, "VietlottVNs");
+            if (ds.Tables.Count > 0)
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    DataRow row = (DataRow) ds.Tables[0].Rows[i];
+                 
+                    //((DataRow)row).ItemArray[0]
+                    lst.Add(new VietlottVNDto()
+                    {
+                        VietLottID = (int)row.ItemArray[0],
+                        DrawId = (int)row.ItemArray[1],
+                        DayPrize = (DateTime)row.ItemArray[2],
+                        FullBlockNumber = (string)row.ItemArray[3],
+                        NumberOne = (int)row.ItemArray[4],
+                        NumberTwo = (int)row.ItemArray[5],
+                        NumberThree = (int)row.ItemArray[6],
+                        NumberFour = (int)row.ItemArray[7],
+                        NumberFive = (int)row.ItemArray[8],
+                        NumberSix = (int)row.ItemArray[9],
+                        ImportDate = (DateTime)row.ItemArray[10]
+                    });
+                }
+            }
+            return lst;
+        }
+
     }
 }

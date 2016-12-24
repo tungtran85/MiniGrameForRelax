@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,10 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationModel.cs" />
+    <Compile Include="NumberCustom.cs" />
     <Compile Include="PGVietLottVN.cs" />
     <Compile Include="PostgresBOL.cs" />
     <Compile Include="PostgresServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplitImage.cs" />
+    <Compile Include="VietlottVNDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

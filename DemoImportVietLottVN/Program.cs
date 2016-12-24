@@ -17,7 +17,8 @@ namespace DemoImportVietLottVN
         public static void Demo()
         {
             var bolService = new PostgresDAL.PostgresServices();
-            bolService.DemoInertVietLott();
+            //bolService.DemoInertVietLott();
+            bolService.GetListByAmount();
         }
 
         public static void ImportOnePageVietlottVN(int pageId)
@@ -95,7 +96,7 @@ namespace DemoImportVietLottVN
 
         public static void LookupVietlotVN()
         {
-            for (int i = 3; i > 0; i--)
+            for (int i = 4; i > 0; i--)
             {
                 ImportOnePageVietlottVN(i);
             }
